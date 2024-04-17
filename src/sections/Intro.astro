@@ -1,12 +1,12 @@
 ---
-const TIMESTAMP_END = 1735141834
+const TIMESTAMP_END = 1740301200000
 ---
 
 <section class="md:pl-12 flex flex-col md:flex-row justify-center items-center">
   <div class="px-12 order-2 md:order-none w-full">
     <div class="flex flex-row w-full items-center justify-center h-96 gap-2" data-date={TIMESTAMP_END}>
       <div class="flex flex-col justify-center items-center">
-        <p class="text-8xl" data-days>0</p>
+        <p class="text-8xl" data-days>00</p>
         <p class="text-4xl">DIES</p>
       </div>
       <div class="flex flex-col justify-center items-center">
@@ -14,7 +14,7 @@ const TIMESTAMP_END = 1735141834
         <p class="text-white">.</p>
       </div>
       <div class="flex flex-col justify-center items-center">
-        <p class="text-8xl" data-hours>23</p>
+        <p class="text-8xl" data-hours>00</p>
         <p class="text-4xl">HORES</p>
       </div>
       <div class="flex flex-col justify-center items-center">
@@ -22,7 +22,7 @@ const TIMESTAMP_END = 1735141834
         <p class="text-white">.</p>
       </div>
       <div class="flex flex-col justify-center items-center">
-        <p class="text-8xl" data-minutes>58</p>
+        <p class="text-8xl" data-minutes>00</p>
         <p class="text-4xl">MINUTS</p>
       </div>
       <div class="flex flex-col justify-center items-center">
@@ -30,7 +30,7 @@ const TIMESTAMP_END = 1735141834
         <p class="text-white">.</p>
       </div>
       <div class="flex flex-col justify-center items-center">
-        <p class="text-8xl" data-seconds>18</p>
+        <p class="text-8xl" data-seconds>00</p>
         <p class="text-4xl">SEGONS</p>
       </div>
       
@@ -45,21 +45,15 @@ const TIMESTAMP_END = 1735141834
   </div>
 </section>
 
-<style>
-.h-custom {
-  height: 60vh;
-}
-</style>
-
 <script>
   const SECOND = 1000
-  const MINUTE = SECOND * 60
-  const HOUR = MINUTE * 60
-  const DAY = HOUR * 24
+  const MINUTE = SECOND*60
+  const HOUR = MINUTE*60
+  const DAY = HOUR*24
 
   function init() {
-    const $countdown = document.querySelector("[data-date]")
-    if(!$countdown) return 
+    const $countdown = document.querySelector('[data-date]')
+    if(!$countdown) return
 
     const $days = $countdown.querySelector('[data-days]')
     const $hours = $countdown.querySelector('[data-hours]')
@@ -67,21 +61,42 @@ const TIMESTAMP_END = 1735141834
     const $seconds = $countdown.querySelector('[data-seconds]')
 
     const timestamp = $countdown.getAttribute('data-date')
-    if(!timestamp) return 
+    if(!timestamp) return
 
     const date = new Date(+timestamp).getTime()
 
-    function updateCountdown() {
-      const now = Date.now()
-      const diff = date-now
+    const formatTime = (time: number) => {
+      return Math.floor(time).toString().padStart(2, "0")
+    }
 
-      if($days instanceof HTMLElement) {
-        $days.innerHTML = Math.floor(diff/DAY).toString()
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = date - now;
+
+      if ($days instanceof HTMLElement) {
+        $days.innerHTML = formatTime(diff / DAY);
+      }
+      if ($hours instanceof HTMLElement) {
+        const hoursRemaining = diff % DAY;
+        $hours.innerHTML = formatTime(hoursRemaining / HOUR);
+      }
+      if ($minutes instanceof HTMLElement) {
+        const minutesRemaining = diff % HOUR;
+        $minutes.innerHTML = formatTime(minutesRemaining / MINUTE);
+      }
+      if ($seconds instanceof HTMLElement) {
+        const secondsRemaining = diff % MINUTE;
+        $seconds.innerHTML = formatTime(secondsRemaining / SECOND);
       }
     }
 
     setInterval(updateCountdown, SECOND)
-    updateCountdown()
-
   }
+  init()
 </script>
+
+<style>
+.h-custom {
+  height: 60vh;
+}
+</style>
