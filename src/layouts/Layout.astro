@@ -1,0 +1,28 @@
+---
+import '@fontsource/caveat-brush';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="cat">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Proves" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/img/logo.jpg" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: 'Caveat Brush', system-ui, sans-serif;
+	}
+</style>
