@@ -1,18 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../layouts/Header.astro';
-import Hero from '../sections/Hero.astro';
-import Intro from '../sections/Intro.astro';
-import Recorreguts from '../sections/Recorreguts.astro';
-import Info from '../sections/Info.astro';
+import Fotos from './index/Fotos.astro';
 ---
 
-<Layout title="Stravada">
-	<main>
-    <Header/>
-		<Hero/>
-    <Intro />
-    <Recorreguts />
-    <Info />
+<Layout title="Black Pata CC">
+  <Header />
+	<main class="m-custom">
+    <Fotos />
 	</main>
 </Layout>
+
+<style>
+.m-custom {
+  margin-top: 11vh;
+}
+
+</style>
