@@ -1,0 +1,98 @@
+<section class="demo-wrap bg-opacity-70 overflow-hidden">
+  <div class="demo-content h-custom flex flex-col md:justify-center ml-8 md:ml-12 m-custom">
+    <h1 class="text-black text-5xl md:text-8xl">Stravada</h1>
+    <h2 class="text-black text-3xl md:text-5xl">Black Pata CC</h2>
+  </div>
+</section>
+
+<style>
+.demo-wrap {
+  position: relative;
+}
+
+.demo-wrap:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 85vh;
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  animation: backgroundChange 25s infinite;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-image: url('/img/background/img1.jpg');
+  }
+  15% {
+    background-image: url('/img/background/img1.jpg');
+  }
+  20% {
+    background-image: url('/img/background/img2.jpg');
+  }
+  35% {
+    background-image: url('/img/background/img2.jpg');
+  }
+  40% {
+    background-image: url('/img/background/img3.jpg');
+  }
+  55% {
+    background-image: url('/img/background/img3.jpg');
+  }
+  60% {
+    background-image: url('/img/background/img4.jpg');
+  }
+  75% {
+    background-image: url('/img/background/img4.jpg');
+  }
+  80% {
+    background-image: url('/img/background/img5.jpg');
+  }
+  95% {
+    background-image: url('/img/background/img5.jpg');
+  }
+  100% {
+    background-image: url('/img/background/img1.jpg');
+  }
+}
+/* @keyframes backgroundChange {
+  0% {
+    background-image: url('/img/background/img1.jpg');
+    opacity: 0.7;
+  }
+  40% {
+    background-image: url('/img/background/img1.jpg');
+    opacity: 0.7;
+  }
+  50% {
+    background-image: url('/img/background/img2.jpg');
+    opacity: 0.7;
+  }
+  90% {
+    background-image: url('/img/background/img2.jpg');
+  }
+  100% {
+    background-image: url('/img/background/img1.jpg');
+    opacity: 0.7;
+
+  }
+} */
+
+
+
+.demo-content {
+  position: relative;
+}
+
+.h-custom {
+  height: 85vh;
+}
+.m-custom {
+  margin-top: 12vh;
+}
+</style>
